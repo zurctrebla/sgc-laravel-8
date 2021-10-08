@@ -24,7 +24,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th width="250">Ações</th>
+                        <th width="300">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +34,7 @@
                                 {{ $guest->name }}
                             </td>
                             <td style="width=10px;">
+                                <a href="{{ route('guests.qrcode', $guest->id) }}" class="btn btn-default"><i class="fas fa-qrcode"></i></a>
                                 <a href="{{-- {{ route('details.guests.index', $guest->id) }} --}}" class="btn btn-primary">Detalhes</a>
                                 <a href="{{ route('guests.edit', $guest->id) }}" class="btn btn-info">Editar</a>
                                 <a href="{{ route('guests.show', $guest->id) }}" class="btn btn-warning">Ver</a>

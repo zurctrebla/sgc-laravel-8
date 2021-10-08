@@ -24,6 +24,9 @@ Route::prefix('admin')
     /**
      * Routes guests
      */
+
+    Route::get('guests/qrcode/{id}', 'GuestController@qrcode')->name('guests.qrcode');
+
     Route::get('guests/create', 'GuestController@create')->name('guests.create');
     Route::put('guests/{id}', 'GuestController@update')->name('guests.update');
     Route::get('guests/{id}/edit', 'GuestController@edit')->name('guests.edit');

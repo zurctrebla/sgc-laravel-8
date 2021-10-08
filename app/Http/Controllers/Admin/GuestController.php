@@ -72,6 +72,23 @@ class GuestController extends Controller
     }
 
     /**
+     * Generate QrCode Table.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function qrcode($id)
+    {
+
+        if(!$guest = $this->repository->where('id', $id)->first())
+            return redirect()->back();
+
+        $uri = env('URI_CLIENT') . "/{$guest->name}" ;
+
+        return view('admin.pages.guests.qrcode', compact('uri'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
