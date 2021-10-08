@@ -131,4 +131,10 @@ class GuestController extends Controller
 
         return redirect()->route('guests.index');
     }
+
+    public function teste()
+    {
+        $guests = $this->repository->latest()->paginate();
+        return view('admin.pages.guests.teste', compact('guests'));
+    }
 }
