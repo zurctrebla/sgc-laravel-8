@@ -15,6 +15,7 @@ class RoleController extends Controller
     {
         $this->repository = $role;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +25,7 @@ class RoleController extends Controller
     {
         $roles = $this->repository->latest()->paginate();
 
-        return view('admin.pages.roles.index', [
-            'roles' => $roles,
-        ]);
+        return view('admin.pages.roles.index', compact('roles'));
     }
 
     /**
@@ -60,14 +59,10 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = $this->repository->where('id', $id)->first();
-
-        if(!$role)
+        if(!$role = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
-        return view('admin.pages.roles.show', [
-            'role' => $role
-        ]);
+        return view('admin.pages.roles.show',compact('role'));
     }
 
     /**
@@ -78,14 +73,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = $this->repository->where('id', $id)->first();
-
-        if(!$role)
+        if(!$role = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
-        return view('admin.pages.roles.edit',[
-            'role' => $role
-        ]);
+        return view('admin.pages.roles.edit', compact('role'));
     }
 
     /**
@@ -97,15 +88,13 @@ class RoleController extends Controller
      */
     public function update(StoreUpdateRole $request, $id)
     {
-        $role = $this->repository->where('id', $id)->first();
-
-        if(!$role)
-            return redirect()->back();
+        if(!$role = $this->repository->where('id', $id)->first())
+            return redirect()->back()->with('error', 'Não foi possível deletar');
 
         // dd($request->all());
         $role->update($request->all());
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('message', 'Função editada com sucesso');
     }
 
     /**
@@ -116,9 +105,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = $this->repository->where('id', $id)->first();
-
-        if(!$role)
+        if(!$role = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
         // return view('admin.pages.plans.show', [

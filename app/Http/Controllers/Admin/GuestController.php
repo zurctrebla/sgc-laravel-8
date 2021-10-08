@@ -25,9 +25,7 @@ class GuestController extends Controller
     {
         $guests = $this->repository->latest()->paginate();
 
-        return view('admin.pages.guests.index', [
-            'guests' => $guests,
-        ]);
+        return view('admin.pages.guests.index', compact('guests'));
     }
 
     /**
@@ -61,14 +59,10 @@ class GuestController extends Controller
      */
     public function show($id)
     {
-        $guest = $this->repository->where('id', $id)->first();
-
-        if(!$guest)
+        if(!$guest = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
-        return view('admin.pages.guests.show', [
-            'guest' => $guest
-        ]);
+        return view('admin.pages.guests.show', compact('guest'));
     }
 
     /**
@@ -79,7 +73,6 @@ class GuestController extends Controller
      */
     public function qrcode($id)
     {
-
         if(!$guest = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
@@ -96,14 +89,10 @@ class GuestController extends Controller
      */
     public function edit($id)
     {
-        $guest = $this->repository->where('id', $id)->first();
-
-        if(!$guest)
+        if(!$guest = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
-        return view('admin.pages.guests.edit',[
-            'guest' => $guest
-        ]);
+        return view('admin.pages.guests.edit', compact('guest'));
     }
 
     /**
@@ -115,9 +104,7 @@ class GuestController extends Controller
      */
     public function update(StoreUpdateGuest $request, $id)
     {
-        $guest = $this->repository->where('id', $id)->first();
-
-        if(!$guest)
+        if(!$guest = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
         // dd($request->all());
@@ -134,9 +121,7 @@ class GuestController extends Controller
      */
     public function destroy($id)
     {
-        $guest = $this->repository->where('id', $id)->first();
-
-        if(!$guest)
+        if(!$guest = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
         // return view('admin.pages.plans.show', [
