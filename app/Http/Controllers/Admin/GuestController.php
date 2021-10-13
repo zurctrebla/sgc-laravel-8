@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateGuest;
 use Illuminate\Http\Request;
 use App\Models\Guest;
-// use App\Models\Destiny;
+use App\Models\Destiny;
 use Illuminate\Support\Facades\Storage;
 
 class GuestController extends Controller
@@ -38,9 +38,10 @@ class GuestController extends Controller
      */
     public function create()
     {
-        $destinies = /* Destiny::find()->all(); */  $this->repository->paginate();
+        // $destinies = /* Destiny::find()->all(); */  $this->repository->paginate();
 
         // dd($destinies);
+        $destinies = Destiny::all();
 
         return view('admin.pages.guests.create', compact('destinies'));
     }

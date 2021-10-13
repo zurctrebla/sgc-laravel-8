@@ -14,7 +14,7 @@
     <input type="text" name="destiny" class="form-control" placeholder="Setor, Casa, Lote, Bloco, etc ..." value="{{ $guest->destiny ?? old('destiny') }}">
 </div>
 
-<div hidden class="class-form-group">
+<div  class="class-form-group">
     <label>* Destino:</label>
     <select name="categoria_id" id="categoria" class="form-control">
         <option value="">Escolha</option>
