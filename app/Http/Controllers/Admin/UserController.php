@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\User;
 
 class UserController extends Controller
 {

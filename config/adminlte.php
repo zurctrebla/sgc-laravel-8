@@ -233,7 +233,7 @@ return [
         ],
         // [
         //     'text' => 'Usuários',
-        //     'url'  => 'admin/settings',
+        //     'url'  => 'admin/users',
         //     'icon' => 'fas fa-users',
         // ],
         // [
