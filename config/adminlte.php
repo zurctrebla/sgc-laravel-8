@@ -231,20 +231,25 @@ return [
             'url'  => 'admin',
             'icon' => 'fas fa-tachometer-alt',
         ],
-        [
-            'text' => 'Usuários',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-users',
-        ],
-        [
-            'text' => 'Funções',
-            'url'  => 'admin/roles',
-            'icon' => 'fas fa-address-card',
-        ],
+        // [
+        //     'text' => 'Usuários',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-users',
+        // ],
+        // [
+        //     'text' => 'Funções',
+        //     'url'  => 'admin/roles',
+        //     'icon' => 'fas fa-address-card',
+        // ],
         [
             'text' => 'Visitantes',
             'url'  => 'admin/guests',
             'icon' => 'fas fa-user-tie',
+        ],
+        [
+            'text' => 'Destinos',
+            'url'  => 'admin/destinies',
+            'icon' => 'fas fa-map-marker',
         ],
     ],
 

@@ -23,8 +23,23 @@ class StoreUpdateGuest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => "required|min:3|max:255",
+        //  protected $fillable = ['name', 'document', 'photo', 'destiny', 'person', 'company', 'start_at', 'expires_at'];
+
+        $rules = [
+            'name' => ['required', 'min:3', 'max:255'],
+            'document' => ['required', 'min:3', 'max:255'],
+            'photo' => ['required', 'image'],
+            'destiny' => ['required', 'min:3', 'max:255'],
+            'person' => ['required', 'min:3', 'max:255'],
+            'company' => ['nullable', 'min:3', 'max:255'],
+            'start_at' => ['required', 'date'],
+            'expires_at' => ['required', 'date'],
         ];
+
+        if ($this->method() == 'PUT') {
+            $rules['photo'] = ['nullable', 'image'];
+        }
+
+        return $rules;
     }
 }

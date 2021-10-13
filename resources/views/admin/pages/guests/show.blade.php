@@ -13,6 +13,19 @@
                 <li>
                     <strong>Nome: </strong> {{ $guest->name }}
                 </li>
+                <li>
+                    <strong>Documento: </strong> {{ $guest->document }}
+                </li>
+                <li>
+                    <strong>Data de Acesso: </strong> {{ date('d/m/Y', strtotime($guest->start_at) )}}
+                </li>
+
+                <li>
+                    <strong>Data que Expira: </strong> {{ date('d/m/Y', strtotime($guest->expires_at) )}}
+                </li>
+                <li>
+                    <strong>Foto: </strong> <img src="{{url("storage/{$guest->photo}")}}" alt="{{$guest->name}}" style="max-width: 150px;">
+                </li>
             </ul>
             <form action="{{ route('guests.destroy', $guest->id) }}" method="POST">
                 @csrf

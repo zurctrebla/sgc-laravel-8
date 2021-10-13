@@ -18,8 +18,14 @@ Route::prefix('admin')
     /**
      * Routes Users
      */
-    // Route::any('users/search', 'UserController@search')->name('users.search');
-    // Route::resource('users', 'UsersController');
+    Route::any('destinies/search', 'DestinyController@search')->name('destinies.search');
+    Route::resource('destinies', 'DestinyController');
+
+    /**
+     * Routes Users
+     */
+    Route::any('users/search', 'UserController@search')->name('users.search');
+    Route::resource('users', 'UserController');
 
     /**
      * Routes guests
@@ -61,7 +67,7 @@ Route::prefix('admin')
 // });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 /**

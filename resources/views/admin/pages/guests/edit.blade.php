@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="class card-board">
-            <form action="{{ route('guests.update', $guest->id) }}" class="form" method="POST">
+            <form action="{{ route('guests.update', $guest->id) }}" class="form" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @include('admin.pages.guests._partials.form')
             </form>

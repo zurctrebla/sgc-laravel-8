@@ -24,6 +24,11 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Documento</th>
+                        <th>Foto</th>
+                        <th>Pessoa</th>
+                        <th>Data de Acesso</th>
+                        <th>Data que Expira </th>
                         <th width="300">Ações</th>
                     </tr>
                 </thead>
@@ -33,8 +38,23 @@
                             <td>
                                 {{ $guest->name }}
                             </td>
+                            <td>
+                                {{ $guest->document }}
+                            </td>
+                            <td>
+                                <img src="{{url("storage/{$guest->photo}")}}" alt="{{$guest->name}}" style="max-width: 90px;">
+                            </td>
+                            <td>
+                                {{ $guest->person }}
+                            </td>
+                            <td>
+                                {{ date('d/m/Y', strtotime($guest->start_at) )}}
+                            </td>
+                            <td>
+                                {{ date('d/m/Y', strtotime($guest->expires_at) )}}
+                            </td>
                             <td style="width=10px;">
-                                <a href="{{ route('guests.qrcode', $guest->id) }}" class="btn btn-default"><i class="fas fa-qrcode"></i></a>
+                                <a href="{{-- {{ route('guests.qrcode', $guest->id) }} --}}" class="btn btn-default"><i class="fas fa-qrcode"></i></a>
                                 <a href="{{-- {{ route('details.guests.index', $guest->id) }} --}}" class="btn btn-primary">Detalhes</a>
                                 <a href="{{ route('guests.edit', $guest->id) }}" class="btn btn-info">Editar</a>
                                 <a href="{{ route('guests.show', $guest->id) }}" class="btn btn-warning">Ver</a>
