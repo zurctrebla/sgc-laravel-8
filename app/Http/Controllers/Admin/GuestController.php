@@ -108,7 +108,9 @@ class GuestController extends Controller
         if(!$guest = $this->repository->where('id', $id)->first())
             return redirect()->back();
 
-        return view('admin.pages.guests.edit', compact('guest'));
+        $destinies = Destiny::all();
+
+        return view('admin.pages.guests.edit', compact('guest', 'destinies'));
     }
 
     /**
