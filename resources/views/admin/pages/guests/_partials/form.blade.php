@@ -1,5 +1,6 @@
 @csrf
 @include('admin.includes.alerts')
+
 <div class="class-form-group">
     <label>* Nome:</label>
     <input type="text" name="name" class="form-control" placeholder="Nome:" value="{{ $guest->name ?? old('name') }}">
@@ -12,6 +13,18 @@
 <div class="class-form-group">
     <label>* Destino:</label>
     <input type="text" name="destiny" class="form-control" placeholder="Setor, Casa, Lote, Bloco, etc ..." value="{{ $guest->destiny ?? old('destiny') }}">
+</div>
+
+<div class="class-form-group">
+    <label>* Destino:</label>
+    <select name="categoria_id" id="categoria" class="form-control">
+        <option value="">Escolha</option>
+            <optgroup label="Selecione um destino">
+                @foreach($destinies as $destiny)
+                    <option value="{{ $destiny->id }}">{{ $destiny->name }}</option>
+                @endforeach
+            </optgroup>
+    </select>
 </div>
 
 <div class="class-form-group">

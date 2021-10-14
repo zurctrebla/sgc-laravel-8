@@ -1,24 +1,32 @@
 @extends('adminlte::page')
 
-@section('title', "Detalhes da função {$role->name}")
+@section('title', "Detalhes da Função {$role->name}")
 
 @section('content_header')
-    <h1><b>Detalhes do visitante</b>{{ $role->name }}</h1>
+    <h1><b>Detalhes da Função </b>{{ $role->name }}</h1>
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <ul>
-                <li>
-                    <strong>Nome: </strong> {{ $role->name }}
-                </li>
-            </ul>
-            <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">DELETAR A FUNÇÃO {{ $role->name }}</button>
-            </form>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">Visualizar</h3>
+            </div>
+            <div class="card-body">
+                <div class="column-responsive column-80">
+                    <div class="inputs view content">
+                        <table>
+                            <tr>
+                                <th><?= __('Função') ?></th>
+                                <td>{{ $role->name }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-    <div>
+    </div>
 @endsection
+

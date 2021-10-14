@@ -58,7 +58,10 @@ class DestinyController extends Controller
      */
     public function show($id)
     {
-        //
+        if(!$destiny = $this->repository->where('id', $id)->first())
+            return redirect()->back();
+
+        return view('admin.pages.destinies.show', compact('destiny'));
     }
 
     /**
