@@ -15,18 +15,6 @@
 </div>
 
 <div class="class-form-group">
-    <label>* Destino:</label>
-    <select name="categoria_id" id="categoria" class="form-control">
-        <option value="">Escolha</option>
-            <optgroup label="Selecione um destino">
-                @foreach($destinies as $destiny)
-                    <option value="{{ $destiny->id }}">{{ $destiny->name }}</option>
-                @endforeach
-            </optgroup>
-    </select>
-</div>
-
-<div class="class-form-group">
     <label>* Falar com quem:</label>
     <input type="text" name="person" class="form-control" placeholder="falar com quem:" value="{{ $guest->person ?? old('person') }}">
 </div>
