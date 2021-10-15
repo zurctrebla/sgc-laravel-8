@@ -1,4 +1,3 @@
-@csrf
 @include('admin.includes.alerts')
 
 <div class="row">

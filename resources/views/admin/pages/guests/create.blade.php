@@ -1,18 +1,27 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastrar Novo Visitante')
+@section('title', 'Cadastrar Visitante')
 
 @section('content_header')
-    <h1>Cadastrar Novo Visitante</h1>
+    <h1>Cadastrar Visitante</h1>
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="class card-board">
-            <form action="{{ route('guests.store') }}" class="form" method="POST" enctype="multipart/form-data">
-                @include('admin.pages.guests._partials.form')
-            </form>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">Novo Usuário</h3>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('guests.store') }}" class="form" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @include('admin.pages.guests._partials.form')
+                </form>
+            </div>
+            </div>
+            </div>
         </div>
     </div>
-
 @endsection

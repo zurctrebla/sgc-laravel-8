@@ -72,7 +72,10 @@ class DestinyController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(!$destiny = $this->repository->where('id', $id)->first())
+            return redirect()->back();
+
+        return view('admin.pages.destinies.edit', compact('destiny'));
     }
 
     /**
@@ -84,7 +87,13 @@ class DestinyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!$destiny = $this->repository->find($id))
+            return redirect()->back();
+
+        // dd($request->all());
+        $destiny->update($request->all());
+
+        return redirect()->route('destinies.index');
     }
 
     /**
