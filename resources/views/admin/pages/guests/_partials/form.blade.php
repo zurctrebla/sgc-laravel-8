@@ -20,10 +20,10 @@
     <div class="col-sm-6">
       <div class="form-group">
         <div class="class-form-group">
-            <label>* Destino:</label>
+            <label>* Setor:</label>
             <select name="destiny" id="destiny" class="form-control">
                 <option value="">Escolha</option>
-                    <optgroup label="Selecione um destino">
+                    <optgroup label="Selecione um setor">
                         @foreach($destinies as $destiny)
                             <option value="{{ $destiny->name }}">{{ $destiny->name }}</option>
                         @endforeach

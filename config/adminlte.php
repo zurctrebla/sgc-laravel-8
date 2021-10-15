@@ -247,9 +247,9 @@ return [
             'icon' => 'fas fa-user-tie',
         ],
         [
-            'text' => 'Destinos',
+            'text' => 'Setores',
             'url'  => 'admin/destinies',
-            'icon' => 'fas fa-map-marker',
+            'icon' => 'fas fa-map-signs',
         ],
     ],
 

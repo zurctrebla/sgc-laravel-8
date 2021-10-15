@@ -52,6 +52,10 @@
                             <th><?= __('Falar com quem:') ?></th>
                             <td>{{ $guest->person }}</td>
                         </tr>
+                        <tr>
+                            <th><?= __('Setor:') ?></th>
+                            <td>{{ $guest->destiny }}</td>
+                        </tr>
                         <?php if($guest->company) : ?>
                         <tr>
                             <th><?= __('Empresa') ?></th>

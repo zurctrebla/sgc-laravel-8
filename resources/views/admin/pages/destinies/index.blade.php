@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Destinos')
+@section('title', 'Setores')
 
 @section('content_header')
     <div class="container-fluid">
@@ -23,7 +23,7 @@
         <div class="col-md-12">
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Destinos</h3>
+              <h3 class="card-title">Setores</h3>
             </div>
             <div class="card-body">
               <table id="destinies" class="table table-bordered table-striped">

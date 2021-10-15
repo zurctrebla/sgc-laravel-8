@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="card card-secondary">
             <div class="card-header">
-                <h3 class="card-title">Novo Usuário</h3>
+                <h3 class="card-title">Novo Visitante</h3>
             </div>
             <div class="card-body">
                 <form action="{{ route('guests.store') }}" class="form" method="POST" enctype="multipart/form-data">

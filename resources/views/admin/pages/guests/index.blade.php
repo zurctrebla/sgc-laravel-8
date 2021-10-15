@@ -32,6 +32,7 @@
                   <th>Visitante</th>
                   <th>Documento</th>
                   <th>Imagem</th>
+                  <th>Setor</th>
                   <th>Data de Entrada</th>
                   <th>Data de Saída</th>
                   <th class="text-center">Ações</th>
@@ -43,6 +44,7 @@
                         <td>{{ $guest->name }}</td>
                         <td>{{ $guest->document }}</td>
                         <td><img src="{{url("storage/{$guest->photo}")}}" alt="{{$guest->name}}" style="max-width: 80px;"></td>
+                        <td>{{ $guest->destiny }}</td>
                         <td>{{ date('d/m/Y', strtotime($guest->start_at) )}}</td>
                         <td>{{ date('d/m/Y', strtotime($guest->expires_at) )}}</td>
                         <td class="text-center">
