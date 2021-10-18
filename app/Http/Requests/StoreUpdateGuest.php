@@ -32,6 +32,7 @@ class StoreUpdateGuest extends FormRequest
             'destiny' => ['required', 'min:2', 'max:255'],
             'person' => ['required', 'min:3', 'max:255'],
             'company' => ['nullable', 'min:3', 'max:255'],
+            'obs' => ['nullable', 'min:3', 'max:255'],
             'start_at' => ['required', 'date'],
             'expires_at' => ['required', 'date'],
         ];

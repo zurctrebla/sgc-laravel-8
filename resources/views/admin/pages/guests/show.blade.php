@@ -58,20 +58,27 @@
                         </tr>
                         <?php if($guest->company) : ?>
                         <tr>
-                            <th><?= __('Empresa') ?></th>
+                            <th><?= __('Empresa:') ?></th>
                             <td>{{ $guest->company }}</td>
                         </tr>
                             <?php endif ?>
+
+                            <?php if($guest->obs) : ?>
+                            <tr>
+                                <th><?= __('Observação:') ?></th>
+                                <td>{{ $guest->obs }}</td>
+                            </tr>
+                                <?php endif ?>
                         <tr>
-                            <th><?= __('Data de Entrada') ?></th>
+                            <th><?= __('Data de Entrada:') ?></th>
                             <td>{{ $guest->start_at }}</td>
                         </tr>
                         <tr>
-                            <th><?= __('Data de Saída') ?></th>
+                            <th><?= __('Data de Saída:') ?></th>
                             <td>{{ $guest->expires_at }}</td>
                         </tr>
                         <tr>
-                            <th><?= __('Foto') ?></th>
+                            <th><?= __('Foto:') ?></th>
                             <td><img src="{{url("storage/{$guest->photo}")}}" alt="{{$guest->name}}" style="max-width: 150px;"></td>
                         </tr>
                     </table>

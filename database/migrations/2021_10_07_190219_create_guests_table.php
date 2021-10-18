@@ -23,6 +23,7 @@ class CreateGuestsTable extends Migration
             // $table->integer('destiny_id');
             $table->string('person');
             $table->string('company')->nullable();
+            $table->text('obs')->nullable();
             $table->date('start_at');
             $table->date('expires_at');
             $table->timestamps();

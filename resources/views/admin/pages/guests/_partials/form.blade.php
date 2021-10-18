@@ -50,6 +50,15 @@
 </div>
 
 <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>* Observação:</label>
+        <input type="textarea" name="obs" class="form-control" placeholder="Alguma observação:" value="{{ $guest->obs ?? old('obs') }}">
+      </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-sm-6">
       <div class="form-group">
        <label>Data Inicial *</label>
