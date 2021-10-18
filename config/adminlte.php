@@ -231,6 +231,11 @@ return [
             'url'  => 'admin',
             'icon' => 'fas fa-tachometer-alt',
         ],
+        [
+            'text' => 'Perfil',
+            'url'  => 'admin/profiles/create',
+            'icon' => 'fas fa-users',
+        ],
         // [
         //     'text' => 'Usuários',
         //     'url'  => 'admin/users',

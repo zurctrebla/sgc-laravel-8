@@ -15,6 +15,7 @@ class UserController extends Controller
     {
         $this->repository = $user;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,6 +36,16 @@ class UserController extends Controller
     public function create()
     {
         return view('admin.pages.users.create');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function member()
+    {
+        return view('admin.pages.users.member');
     }
 
     /**
@@ -136,19 +147,19 @@ class UserController extends Controller
      * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
-    {
-        $filters = $request->only('filter');
+    // public function search(Request $request)
+    // {
+    //     $filters = $request->only('filter');
 
-        $users = $this->repository
-                                ->where(function($query) use ($request){
-                                    if($request->filter){
-                                        $query->orWhere('name', 'LIKE', "%{$request->filter}%");
-                                        $query->orWhere('email', $request->filter);
-                                    }
-                                })
-                                ->paginate();
+    //     $users = $this->repository
+    //                             ->where(function($query) use ($request){
+    //                                 if($request->filter){
+    //                                     $query->orWhere('name', 'LIKE', "%{$request->filter}%");
+    //                                     $query->orWhere('email', $request->filter);
+    //                                 }
+    //                             })
+    //                             ->paginate();
 
-        return view('admin.pages.users.index', compact('users', 'filters'));
-    }
+    //     return view('admin.pages.users.index', compact('users', 'filters'));
+    // }
 }

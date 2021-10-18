@@ -20,7 +20,7 @@
     <div class="col-sm-12">
       <div class="form-group">
        <label>Senha *</label>
-       <input type="password" name="password" class="form-control" placeholder="deixe em branco caso não queira alterar a senha">
+       <input type="password" name="password" class="form-control" placeholder="sua senha aqui ... ">
       </div>
     </div>
 </div>

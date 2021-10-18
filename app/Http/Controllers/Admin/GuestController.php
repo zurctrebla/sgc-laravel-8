@@ -47,6 +47,15 @@ class GuestController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function teste()
+    {
+        return "ok";   //view('admin.pages.guests.create', compact('destinies'));
+    }
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -168,11 +177,11 @@ class GuestController extends Controller
         return redirect()->route('guests.index');
     }
 
-    public function teste()
-    {
-        $guests = $this->repository->latest()->paginate();
-        return view('admin.pages.guests.teste', compact('guests'));
-    }
+    // public function teste()
+    // {
+    //     $guests = $this->repository->latest()->paginate();
+    //     return view('admin.pages.guests.teste', compact('guests'));
+    // }
 
     /**
      * Search results

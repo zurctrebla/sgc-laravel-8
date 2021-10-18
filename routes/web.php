@@ -16,7 +16,13 @@ Route::prefix('admin')
         ->group(function(){
 
     /**
-     * Routes Users
+     * Routes Profiles
+     */
+    Route::any('profiles/search', 'ProfileController@search')->name('profiles.search');
+    Route::resource('profiles', 'ProfileController');
+
+    /**
+     * Routes Destinies
      */
     Route::any('destinies/search', 'DestinyController@search')->name('destinies.search');
     Route::resource('destinies', 'DestinyController');
@@ -24,13 +30,14 @@ Route::prefix('admin')
     /**
      * Routes Users
      */
-    Route::any('users/search', 'UserController@search')->name('users.search');
+    // Route::any('users/search', 'UserController@search')->name('users.search');
+    // Route::resource('users', 'UserController');
+    Route::get('users/member', 'UserController@member')->name('users.member');
     Route::resource('users', 'UserController');
 
     /**
      * Routes guests
      */
-
     Route::get('guests/qrcode/{id}', 'GuestController@qrcode')->name('guests.qrcode');
 
     Route::get('guests/teste', 'GuestController@teste')->name('guests.teste');

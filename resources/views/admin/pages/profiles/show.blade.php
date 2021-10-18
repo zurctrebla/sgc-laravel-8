@@ -48,10 +48,6 @@
                                 <th><?= __('E-mail: ') ?></th>
                                 <td>{{ $user->email }}</td>
                             </tr>
-                            <tr>
-                                <th><?= __('teste') ?></th>
-                                <td>{{ dd($user) }}</td>
-                            </tr>
                         </table>
                     </div>
                 </div>
