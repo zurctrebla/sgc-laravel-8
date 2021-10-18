@@ -28,8 +28,8 @@ class StoreUpdateGuest extends FormRequest
         $rules = [
             'name' => ['required', 'min:3', 'max:255'],
             'document' => ['required', 'min:3', 'max:255'],
-            'photo' => ['required', 'image'],
-            'destiny' => ['required', 'min:3', 'max:255'],
+            'photo' => ['nullable', 'image'],
+            'destiny' => ['required', 'min:2', 'max:255'],
             'person' => ['required', 'min:3', 'max:255'],
             'company' => ['nullable', 'min:3', 'max:255'],
             'start_at' => ['required', 'date'],

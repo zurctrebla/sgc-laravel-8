@@ -18,7 +18,7 @@ class CreateGuestsTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->string('document');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('destiny');
             // $table->integer('destiny_id');
             $table->string('person');
