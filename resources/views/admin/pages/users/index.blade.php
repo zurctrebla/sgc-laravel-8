@@ -4,6 +4,7 @@
 
 @section('content_header')
     <div class="container-fluid">
+        @include('admin.includes.alerts')
         <div class="row mb-2">
             <div class="col-sm-6">
             <h3>Listar</h3>
@@ -16,7 +17,6 @@
         </div>
     </div>
 @stop
-
 @section('content')
     <div class="container-fluid">
         <div class="row">

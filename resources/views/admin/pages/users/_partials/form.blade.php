@@ -16,6 +16,16 @@
       </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+       <label>Celular *</label>
+       <input type="text" name="number" class="form-control" placeholder="..." value="{{ $user->phone->number ?? old('number') }}">
+      </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-sm-12">
       <div class="form-group">

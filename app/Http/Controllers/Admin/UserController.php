@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use Illuminate\Http\Request;
 use App\User;
+use App\Phone;
 
 class UserController extends Controller
 {
@@ -57,7 +58,6 @@ class UserController extends Controller
     public function store(StoreUpdateUser $request)
     {
         $data = $request->all();
-        // $data['tenant_id'] = auth()->user()->tenant_id;
         $data['password'] = bcrypt($data['password']);  //  encrypt password
 
         $this->repository->create($data);
@@ -108,16 +108,26 @@ class UserController extends Controller
         if(!$user = $this->repository->find($id))
             return redirect()->back();
 
-        $data = $request->only(['name', 'email']);
+        $data = $request->only(['name', 'email', 'number']);
 
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
 
-        // dd($request->all());
-        $user->update($data);
+        /** inicio da modificação */
+        if (Phone::where('user_id', $id)->get()) {
+            $user->phone()->update([
+                'user_id' => $id,
+                'number' => $data['number'],
+            ]);
+        }else{
+            $user->phone()->create($data);
+        }
+        /** fim */
 
-        return redirect()->route('users.index');
+        //  $user->update($data);   trecho original
+
+        return redirect()->route('users.index')->with('message', 'Usuário Editado com sucesso!');
     }
 
     /**

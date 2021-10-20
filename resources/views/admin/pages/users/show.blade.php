@@ -49,8 +49,8 @@
                                 <td>{{ $user->email }}</td>
                             </tr>
                             <tr>
-                                <th><?= __('teste') ?></th>
-                                <td>{{ dd($user) }}</td>
+                                <th><?= __('Celular') ?></th>
+                                <td>{{ ($user->phone->number ?? '') }}</td>
                             </tr>
                         </table>
                     </div>
