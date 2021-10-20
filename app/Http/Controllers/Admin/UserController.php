@@ -69,7 +69,7 @@ class UserController extends Controller
 
         $user->phone()->create($request->only('number'));       //  desta forma ok
         $user->vehicle()->create($request->only('vehicle'));       //  desta forma ok
-        $user->complement()->create($request->only('complement'));       //  desta forma ok
+        $user->complement()->create($request->only('complement', 'type', 'occupants'));       //  desta forma ok
         // $phone = $user->phone()->create($data);              //  desta forma ok
 
         // $user = $this->repository->where('name', $data['name']);
@@ -152,9 +152,11 @@ class UserController extends Controller
             $user->complement()->update([
                 'user_id' => $id,
                 'complement' => $data['complement'],
+                'type' => $data['type'],
+                'occupants' => $data['occupants'],
             ]);
         }else{
-            $user->complement()->create($request->only('complement'));
+            $user->complement()->create($request->only('complement', 'type', 'occupants'));
         }
         /** fim */
         //  $user->update($data);   trecho original

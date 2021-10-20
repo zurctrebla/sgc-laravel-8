@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Complement extends Model
 {
-    protected $fillable = ['user_id', 'complement'];
+    protected $fillable = ['user_id', 'complement', 'type', 'occupants'];
 }

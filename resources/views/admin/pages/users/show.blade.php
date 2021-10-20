@@ -53,6 +53,14 @@
                                 <td>{{ ($user->complement->complement ?? '') }}</td>
                             </tr>
                             <tr>
+                                <th><?= __('Tipo de Residencia') ?></th>
+                                <td>{{ ($user->complement->type ?? '') }}</td>
+                            </tr>
+                            <tr>
+                                <th><?= __('Quantidade de moradores') ?></th>
+                                <td>{{ ($user->complement->occupants ?? '') }}</td>
+                            </tr>
+                            <tr>
                                 <th><?= __('Celular') ?></th>
                                 <td>{{ ($user->phone->number ?? '') }}</td>
                             </tr>
