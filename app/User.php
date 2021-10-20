@@ -39,6 +39,16 @@ class User extends Authenticatable
 
     public function phone()
     {
-        return $this->hasOne(Phone::class);
+        return $this->hasOne(Models\Phone::class);
+    }
+
+    public function vehicle()
+    {
+        return $this->hasOne(Models\Vehicle::class);
+    }
+
+    public function complement()
+    {
+        return $this->hasOne(Models\Complement::class);
     }
 }

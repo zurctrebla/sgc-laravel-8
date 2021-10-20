@@ -49,8 +49,16 @@
                                 <td>{{ $user->email }}</td>
                             </tr>
                             <tr>
+                                <th><?= __('Endereço') ?></th>
+                                <td>{{ ($user->complement->complement ?? '') }}</td>
+                            </tr>
+                            <tr>
                                 <th><?= __('Celular') ?></th>
                                 <td>{{ ($user->phone->number ?? '') }}</td>
+                            </tr>
+                            <tr>
+                                <th><?= __('Veículo') ?></th>
+                                <td>{{ ($user->vehicle->vehicle ?? '') }}</td>
                             </tr>
                         </table>
                     </div>

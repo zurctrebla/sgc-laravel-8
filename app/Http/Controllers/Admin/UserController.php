@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use Illuminate\Http\Request;
 use App\User;
-use App\Phone;
+use App\Models\{
+        Vehicle,
+        Complement,
+        Phone
+    };
 
 class UserController extends Controller
 {
@@ -60,7 +64,16 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);  //  encrypt password
 
-        $this->repository->create($data);
+        // $this->repository->create($data);
+        $user = User::create($data);
+
+        $user->phone()->create($request->only('number'));       //  desta forma ok
+        $user->vehicle()->create($request->only('vehicle'));       //  desta forma ok
+        $user->complement()->create($request->only('complement'));       //  desta forma ok
+        // $phone = $user->phone()->create($data);              //  desta forma ok
+
+        // $user = $this->repository->where('name', $data['name']);
+        // dd($user->id);
 
         return redirect()->route('users.index');
     }
@@ -108,26 +121,44 @@ class UserController extends Controller
         if(!$user = $this->repository->find($id))
             return redirect()->back();
 
-        $data = $request->only(['name', 'email', 'number']);
+        $data = $request->only(['name', 'email', 'number', 'vehicle', 'complement']);
 
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
 
         /** inicio da modificação */
-        if (Phone::where('user_id', $id)->get()) {
+        if (Phone::where('user_id', $id)->first()) {
             $user->phone()->update([
                 'user_id' => $id,
                 'number' => $data['number'],
             ]);
         }else{
-            $user->phone()->create($data);
+            $user->phone()->create($request->only('number'));
         }
         /** fim */
-
+        /** inicio da modificação */
+        if (Vehicle::where('user_id', $id)->first()) {
+            $user->vehicle()->update([
+                'user_id' => $id,
+                'vehicle' => $data['vehicle'],
+            ]);
+        }else{
+            $user->vehicle()->create($request->only('vehicle'));
+        }
+        /** fim */
+        /** inicio da modificação */
+        if (Complement::where('user_id', $id)->first()) {
+            $user->complement()->update([
+                'user_id' => $id,
+                'complement' => $data['complement'],
+            ]);
+        }else{
+            $user->complement()->create($request->only('complement'));
+        }
+        /** fim */
         //  $user->update($data);   trecho original
-
-        return redirect()->route('users.index')->with('message', 'Usuário Editado com sucesso!');
+        return redirect()->route('users.index')->with('message', 'Usuário atualizado com sucesso');
     }
 
     /**

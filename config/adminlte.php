@@ -236,11 +236,11 @@ return [
         //     'url'  => 'admin/profiles/create',
         //     'icon' => 'fas fa-users',
         // ],
-        // [
-        //     'text' => 'Usuários',
-        //     'url'  => 'admin/users',
-        //     'icon' => 'fas fa-users',
-        // ],
+        [
+            'text' => 'Usuários',
+            'url'  => 'admin/users',
+            'icon' => 'fas fa-users',
+        ],
         // [
         //     'text' => 'Funções',
         //     'url'  => 'admin/roles',
