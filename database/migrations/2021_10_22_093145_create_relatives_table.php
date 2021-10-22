@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehiclesTable extends Migration
+class CreateRelativesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateVehiclesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('relatives', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('type');
-            $table->string('plate');
-            $table->string('color');
+            $table->string('name_relative');
+            // $table->string('relationship');
+            $table->enum('relationship', ['Cônjuge', 'Filho/Filha', 'Irmão/Irmã', 'Pai/Mãe', 'Tio/Tia', 'Sobrinho/Sobrinha', 'outros']);    //  acrescentada
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -32,6 +32,6 @@ class CreateVehiclesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('relatives');
     }
 }

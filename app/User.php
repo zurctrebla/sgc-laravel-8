@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Models\Complement::class);
     }
+
+    public function relative()
+    {
+        return $this->hasOne(Models\Relative::class);
+    }
 }

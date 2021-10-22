@@ -49,24 +49,40 @@
                                 <td>{{ $user->email }}</td>
                             </tr>
                             <tr>
-                                <th><?= __('Endereço') ?></th>
-                                <td>{{ ($user->complement->complement ?? '') }}</td>
+                                <th><?= __('Nacionalidade') ?></th>
+                                <td>{{ ($user->complement->nacionality ?? '') }}</td>
                             </tr>
                             <tr>
-                                <th><?= __('Tipo de Residencia') ?></th>
-                                <td>{{ ($user->complement->type ?? '') }}</td>
+                                <th><?= __('Estado') ?></th>
+                                <td>{{ ($user->complement->state ?? '') }}</td>
                             </tr>
                             <tr>
-                                <th><?= __('Quantidade de moradores') ?></th>
-                                <td>{{ ($user->complement->occupants ?? '') }}</td>
+                                <th><?= __('Nascimento') ?></th>
+                                <td>{{ ($user->complement->birth ?? '') }} {{-- {{ date('d/m/Y', strtotime($role->created_at) )}} --}} </td>
                             </tr>
                             <tr>
-                                <th><?= __('Celular') ?></th>
-                                <td>{{ ($user->phone->number ?? '') }}</td>
+                                <th><?= __('CPF') ?></th>
+                                <td>{{ ($user->complement->cpf ?? '') }}</td>
                             </tr>
                             <tr>
-                                <th><?= __('Veículo') ?></th>
-                                <td>{{ ($user->vehicle->vehicle ?? '') }}</td>
+                                <th><?= __('Quadra') ?></th>
+                                <td>{{ ($user->complement->block ?? '') }}</td>
+                            </tr>
+                            <tr>
+                                <th><?= __('Lote') ?></th>
+                                <td>{{ ($user->complement->lot ?? '') }}</td>
+                            </tr>
+                            <tr>
+                                <th><?= __('Casa') ?></th>
+                                <td>{{ ($user->complement->house ?? '') }}</td>
+                            </tr>
+                            <tr>
+                                <th><?= __('Residentes') ?></th>
+                                <td>{{ ($user->relative->name_relative ?? '') . ' ' . ($user->relative->relationship ?? '') }}</td>
+                            </tr>
+                            <tr>
+                                <th><?= __('Veiculos') ?></th>
+                                <td>{{ ($user->vehicle->type ?? '') . ' ' . ($user->vehicle->plate ?? '') . ' ' . ($user->vehicle->color ?? '')}}</td>
                             </tr>
                         </table>
                     </div>

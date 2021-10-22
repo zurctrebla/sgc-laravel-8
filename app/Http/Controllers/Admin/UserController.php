@@ -9,8 +9,9 @@ use App\User;
 use App\Models\{
         Vehicle,
         Complement,
-        Phone
-    };
+        Phone,
+        Relative
+};
 
 class UserController extends Controller
 {
@@ -68,7 +69,7 @@ class UserController extends Controller
         $user = User::create($data);
 
         $user->phone()->create($request->only('number'));       //  desta forma ok
-        $user->vehicle()->create($request->only('vehicle'));       //  desta forma ok
+        $user->vehicle()->create($request->only('type', 'plate', 'color'));       //  desta forma ok
         $user->complement()->create($request->only('complement', 'type', 'occupants'));       //  desta forma ok
         // $phone = $user->phone()->create($data);              //  desta forma ok
 
@@ -121,7 +122,7 @@ class UserController extends Controller
         if(!$user = $this->repository->find($id))
             return redirect()->back();
 
-        $data = $request->only(['name', 'email', 'number', 'vehicle', 'complement']);
+        $data = $request->all();
 
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
@@ -141,22 +142,41 @@ class UserController extends Controller
         if (Vehicle::where('user_id', $id)->first()) {
             $user->vehicle()->update([
                 'user_id' => $id,
-                'vehicle' => $data['vehicle'],
+                'type' => $data['type'],
+                'plate' => $data['plate'],
+                'color' => $data['color'],
             ]);
         }else{
-            $user->vehicle()->create($request->only('vehicle'));
+            $user->vehicle()->create($request->only('type', 'plate', 'color'));
         }
         /** fim */
         /** inicio da modificação */
+        // protected $fillable = ['user_id', 'nacionality', 'state', 'birth', 'cpf', 'rg', 'block', 'lot', 'house'];
         if (Complement::where('user_id', $id)->first()) {
             $user->complement()->update([
                 'user_id' => $id,
-                'complement' => $data['complement'],
-                'type' => $data['type'],
-                'occupants' => $data['occupants'],
+                'nacionality' => $data['nacionality'],
+                'state' => $data['state'],
+                'birth' => $data['birth'],
+                'cpf' => $data['cpf'],
+                'rg' => $data['rg'],
+                'block' => $data['block'],
+                'lot' => $data['lot'],
+                'house' => $data['house'],
             ]);
         }else{
-            $user->complement()->create($request->only('complement', 'type', 'occupants'));
+            $user->complement()->create($request->only('user_id', 'nacionality', 'state', 'birth', 'cpf', 'rg', 'block', 'lot', 'house'));
+        }
+        /** fim */
+        /** inicio da modificação */
+        if (Relative::where('user_id', $id)->first()) {
+            $user->relative()->update([
+                'user_id' => $id,
+                'name_relative' => $data['name_relative'],
+                'relationship' => $data['relationship'],
+            ]);
+        }else{
+            $user->relative()->create($request->only('name_relative','relationship'));
         }
         /** fim */
         //  $user->update($data);   trecho original

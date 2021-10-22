@@ -36,32 +36,32 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
-                                    <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td class="text-center">
-                                            <span class="d-none d-md-block">
-                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
-                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-warning btn-sm">Editar</a>
-                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Apagar</button>
-                                                    <a hidden href="" class="btn btn-outline-danger btn-sm">Apagar</a>
-                                                </form>
-                                            </span>
-                                            <div class="dropdown d-block d-md-none">
-                                                <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Ações
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
-                                                    <a href="{{ route('users.show', $user->id) }}" class="dropdown-item">Visualizar</a>
-                                                    <a href="{{ route('users.edit', $user->id) }}" class="dropdown-item">Editar</a>
-                                                    <a href="" class="dropdown-item">Apagar</a>
+                                        <tr>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td class="text-center">
+                                                <span class="d-none d-md-block">
+                                                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
+                                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-warning btn-sm">Editar</a>
+                                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm">Apagar</button>
+                                                        <a hidden href="" class="btn btn-outline-danger btn-sm">Apagar</a>
+                                                    </form>
+                                                </span>
+                                                <div class="dropdown d-block d-md-none">
+                                                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Ações
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
+                                                        <a href="{{ route('users.show', $user->id) }}" class="dropdown-item">Visualizar</a>
+                                                        <a href="{{ route('users.edit', $user->id) }}" class="dropdown-item">Editar</a>
+                                                        <a href="" class="dropdown-item">Apagar</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
