@@ -184,6 +184,8 @@ class UserController extends Controller
             $data['password'] = bcrypt($request->password);
         }
 
+        dd($data['vehicle']);
+
         /** inicio da modificação */
         if (Phone::where('user_id', $id)->first()) {
             $user->phone()->update([
@@ -198,9 +200,9 @@ class UserController extends Controller
         if (Vehicle::where('user_id', $id)->first()) {
             $user->vehicle()->update([
                 'user_id' => $id,
-                'type' => $data['type'],
-                'plate' => $data['plate'],
-                'color' => $data['color'],
+                'type' => $data['vehicle']['type'],
+                'plate' => $data['vehicle']['plate'],
+                'color' => $data['vehicle']['color'],
             ]);
         }else{
             $user->vehicle()->create($request->only('type', 'plate', 'color'));

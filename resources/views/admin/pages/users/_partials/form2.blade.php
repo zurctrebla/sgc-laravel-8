@@ -84,21 +84,21 @@
 <div id="app">
     <div class="row" v-for="(input, index) in inputs">
         <div class="col-sm-3">
-        <div class="form-group">
-        <label>Veículo *</label>
-        <input type="text" :name="'contact[' + index + '][name]'" class="form-control" placeholder="Marca e modelo" >
-        </div>
+            <div class="form-group">
+            <label>Veículo *</label>
+            <input type="text" :name="'vehicle[' + index + '][type]'" class="form-control" placeholder="Marca e modelo" >
+            </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group">
             <label>Placa *</label>
-            <input type="text" :name="'contact[' + index + '][phone]'" class="form-control" placeholder="Placa">
+            <input type="text" :name="'vehicle[' + index + '][plate]'" class="form-control" placeholder="Placa">
             </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group">
             <label>Cor *</label>
-            <input type="text" :name="'contact[' + index + '][email]'" class="form-control" placeholder="Cor">
+            <input type="text" :name="'vehicle[' + index + '][color]'" class="form-control" placeholder="Cor">
             </div>
         </div>
         <div class="col-lg-3">
@@ -137,9 +137,9 @@
     methods: {
       addRow() {
         this.inputs.push({
-          name: "",
-          phone: "",
-          email: ""
+          type: "",
+          plate: "",
+          color: ""
         });
       },
       deleteRow(index) {

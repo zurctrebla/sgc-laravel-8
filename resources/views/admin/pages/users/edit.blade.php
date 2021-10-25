@@ -19,7 +19,7 @@
                 <form action="{{ route('users.update', $user->id) }}" class="form" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('admin.pages.users._partials.form')
+                    @include('admin.pages.users._partials.form2')
                 </form>
             </div>
             </div>
