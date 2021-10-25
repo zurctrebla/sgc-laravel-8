@@ -45,6 +45,7 @@ class User extends Authenticatable
     public function vehicle()
     {
         return $this->hasOne(Models\Vehicle::class);
+        //return $this->hasMany(Models\Vehicle::class);   /** um para muitos */
     }
 
     public function complement()
@@ -56,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Models\Relative::class);
     }
+
+    // public function getBirthAttribute($value)
+    // {
+    //     return
+    // }
 }

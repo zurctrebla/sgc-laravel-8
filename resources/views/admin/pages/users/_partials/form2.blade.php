@@ -79,59 +79,72 @@
 </div>
 
 <hr>
-<h3>Declaração de Residentes</h3>
-<hr>
-
-<div class="row">
-    <div class="col-sm-8">
-      <div class="form-group">
-       <label>Nome Completo *</label>
-       <input type="text" name="name_relative" class="form-control" placeholder="Nome Completo" value="{{ $user->relative->name_relative ?? old('name_relative') }}" required>
-      </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group">
-         <label>Grau de parentesco *</label>
-            <select name="relationship" id="relationship" class="form-control" required>
-                <option value="{{ $user->relative->relationship ?? old('relationship') }}" selected>{{ $user->relative->relationship ?? old('relationship') }}</option>
-                <option value="Cônjuge">Cônjuge</option>
-                <option value="Filho/Filha">Filho/Filha</option>
-                <option value="Irmão/Irmã">Irmão/Irmã</option>
-                <option value="Pai/Mãe">Pai/Mãe</option>
-                <option value="Tio/Tia">Tio/Tia</option>
-                <option value="Sobrinho/Sobrinha">Sobrinho/Sobrinha</option>
-                <option value="Outros">Outros</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<hr>
 <h3>Declaração de Veículos</h3>
 <hr>
-
-<div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-       <label>Veículo *</label>
-       <input type="text" name="type" class="form-control" placeholder="Marca e Modelo" value="{{ $user->vehicle->type ?? old('type') }}" required>
-      </div>
-    </div>
-    <div class="col-sm-4">
+<div id="app">
+    <div class="row" v-for="(input, index) in inputs">
+        <div class="col-sm-3">
         <div class="form-group">
-         <label>Placa *</label>
-         <input type="text" name="plate" class="form-control" placeholder="Placa do veículo" value="{{ $user->vehicle->plate ?? old('plate') }}" required>
+        <label>Veículo *</label>
+        <input type="text" :name="'contact[' + index + '][name]'" class="form-control" placeholder="Marca e modelo" >
+        </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+            <label>Placa *</label>
+            <input type="text" :name="'contact[' + index + '][phone]'" class="form-control" placeholder="Placa">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+            <label>Cor *</label>
+            <input type="text" :name="'contact[' + index + '][email]'" class="form-control" placeholder="Cor">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <button type="button" @click="deleteRow(index)" class="btn btn-outline-danger rounded-circle">
+            <i class="fa fa-times"></i>
+            </button>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="form-group">
-         <label>Cor *</label>
-         <input type="text" name="color" class="form-control" placeholder="Cor do veículo" value="{{ $user->vehicle->color ?? old('color') }}" required>
+
+    <div class="form-group row">
+        <div class="col-lg-12">
+          <button type="button" @click="addRow" class="btn btn-outline-secondary">Adiciona</button>
         </div>
     </div>
+
+    <div class="class-form-group">
+        <button type="submit" class="btn btn-dark">Enviar</button>
+    </div>
+
+
 </div>
 
-<div class="class-form-group">
-    <button type="submit" class="btn btn-dark">Enviar</button>
-</div>
 
+
+
+
+<script>
+    const app = new Vue({
+    el: "#app",
+    created() {
+      this.addRow();
+    },
+    data: {
+      inputs: []
+    },
+    methods: {
+      addRow() {
+        this.inputs.push({
+          name: "",
+          phone: "",
+          email: ""
+        });
+      },
+      deleteRow(index) {
+        this.inputs.splice(index, 1);
+      }
+    }
+  });
+</script>

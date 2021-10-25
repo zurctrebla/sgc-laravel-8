@@ -32,7 +32,10 @@ Route::prefix('admin')
      */
     // Route::any('users/search', 'UserController@search')->name('users.search');
     // Route::resource('users', 'UserController');
+    Route::post('users/savage', 'UserController@savage')->name('users.savage');
+    Route::get('users/profile', 'UserController@profile')->name('users.profile');
     Route::get('users/member', 'UserController@member')->name('users.member');
+    Route::get('users/teste', 'UserController@teste')->name('users.teste');
     Route::resource('users', 'UserController');
 
     /**

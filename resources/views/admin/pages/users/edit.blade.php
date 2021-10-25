@@ -8,6 +8,7 @@
 
 @section('content')
     <div class="container-fluid">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
         <div class="row">
         <div class="col-md-12">
             <div class="card card-secondary">

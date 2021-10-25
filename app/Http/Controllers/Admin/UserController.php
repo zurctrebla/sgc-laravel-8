@@ -49,7 +49,60 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function member()
+    public function profile()
+    {
+        // "Ok";
+        return view('admin.pages.users.teste');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function savage(Request $request)
+    {
+        $data = $request->all();
+
+        dd($data);
+
+        $user = User::find(1);
+
+        $user->vehicle()->createMany($data);
+
+        $vehicle = new Vehicle([
+            'type' => $data['type'],
+            'plate' => $data['plate'],
+            'color' => $data['color'],
+
+        ]);
+
+        $user = User::create($data);
+        $user->vehicle()->create($request->only('type', 'plate', 'color'));                     //  desta forma ok
+
+
+
+
+        // "Ok";
+        // return view('admin.pages.users.teste')->with('message', 'Cadastrado com sucesso!');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function teste()
+    {
+        return view('admin.pages.users.teste');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function member(Request $request)
     {
         return view('admin.pages.users.member');
     }
@@ -63,20 +116,23 @@ class UserController extends Controller
     public function store(StoreUpdateUser $request)
     {
         $data = $request->all();
+
+        dd($data);
+
         $data['password'] = bcrypt($data['password']);  //  encrypt password
 
         // $this->repository->create($data);
         $user = User::create($data);
 
-        $user->phone()->create($request->only('number'));       //  desta forma ok
-        $user->vehicle()->create($request->only('type', 'plate', 'color'));       //  desta forma ok
-        $user->complement()->create($request->only('complement', 'type', 'occupants'));       //  desta forma ok
+        $user->phone()->create($request->only('number'));                                       //  desta forma ok
+        $user->vehicle()->create($request->only('type', 'plate', 'color'));                     //  desta forma ok
+        $user->complement()->create($request->only('complement', 'type', 'occupants'));         //  desta forma ok
         // $phone = $user->phone()->create($data);              //  desta forma ok
 
         // $user = $this->repository->where('name', $data['name']);
         // dd($user->id);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('message', 'Usuário criado com sucesso');
     }
 
     /**

@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     protected $fillable = ['name'];
+
+    // public function getDataAttribute($value)
+    // {
+    //     return date('d/m/Y', strtotime($value));
+    // }
 }
