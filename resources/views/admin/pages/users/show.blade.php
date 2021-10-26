@@ -58,7 +58,7 @@
                             </tr>
                             <tr>
                                 <th><?= __('Nascimento') ?></th>
-                                <td>{{ ($user->complement->birth ?? '') }} {{-- {{ date('d/m/Y', strtotime($role->created_at) )}} --}} </td>
+                                <td>{{ ( date('d/m/Y', strtotime($user->complement->birth)) ?? '') }}</td>
                             </tr>
                             <tr>
                                 <th><?= __('CPF') ?></th>
@@ -78,11 +78,19 @@
                             </tr>
                             <tr>
                                 <th><?= __('Residentes') ?></th>
-                                <td>{{ ($user->relative->name_relative ?? '') . ' ' . ($user->relative->relationship ?? '') }}</td>
+                                <td>
+                                    @foreach ($user->relatives as $key => $relative)
+                                    {{ "Residente " . ($key +1) . ' ' . ($relative->name) . ' ' . ($relative->relationship) }} <br>
+                                @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <th><?= __('Veiculos') ?></th>
-                                <td>{{ ($user->vehicle->type ?? '') . ' ' . ($user->vehicle->plate ?? '') . ' ' . ($user->vehicle->color ?? '')}}</td>
+                                <td>
+                                    @foreach ($user->vehicles as $key => $vehicle)
+                                    {{ "Veículo " . ($key +1) . ' ' .($vehicle->type) . ' ' . ($vehicle->plate) . ' ' . ($vehicle->color) }} <br>
+                                    @endforeach
+                                </td>
                             </tr>
                         </table>
                     </div>

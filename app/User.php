@@ -42,10 +42,10 @@ class User extends Authenticatable
         return $this->hasOne(Models\Phone::class);
     }
 
-    public function vehicle()
+    public function vehicles()
     {
-        return $this->hasOne(Models\Vehicle::class);
-        //return $this->hasMany(Models\Vehicle::class);   /** um para muitos */
+        //return $this->hasOne(Models\Vehicle::class);
+        return $this->hasMany(Models\Vehicle::class);   /** um para muitos */
     }
 
     public function complement()
@@ -53,9 +53,10 @@ class User extends Authenticatable
         return $this->hasOne(Models\Complement::class);
     }
 
-    public function relative()
+    public function relatives()
     {
-        return $this->hasOne(Models\Relative::class);
+        // return $this->hasOne(Models\Relative::class);
+        return $this->hasMany(Models\Relative::class);
     }
 
     // public function getBirthAttribute($value)

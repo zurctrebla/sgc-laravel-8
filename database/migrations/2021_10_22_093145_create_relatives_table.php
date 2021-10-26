@@ -16,9 +16,9 @@ class CreateRelativesTable extends Migration
         Schema::create('relatives', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('name_relative');
+            $table->string('name');
             // $table->string('relationship');
-            $table->enum('relationship', ['Cônjuge', 'Filho/Filha', 'Irmão/Irmã', 'Pai/Mãe', 'Tio/Tia', 'Sobrinho/Sobrinha', 'outros']);    //  acrescentada
+            $table->enum('relationship', ['Proprietário', 'Cônjuge', 'Filho/Filha', 'Irmão/Irmã', 'Pai/Mãe', 'Tio/Tia', 'Sobrinho/Sobrinha', 'outros']);    //  acrescentada
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -8,11 +8,15 @@ class Complement extends Model
 {
     protected $fillable = ['user_id', 'nacionality', 'state', 'birth', 'cpf', 'rg', 'block', 'lot', 'house'];
 
-    protected $dates = ['birth'];
+    // protected $dates = ['birth'];
 
-    public function getBirthAttribute($value)
+    // public function getBirthAttribute($value)
+    // {
+    //     return date('d/m/Y', strtotime($value));
+    // }
+
+    public function user()
     {
-        return date('d/m/Y', strtotime($value));
+        return $this->belongsTo(User::class);
     }
-
 }

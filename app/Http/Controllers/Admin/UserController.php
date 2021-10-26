@@ -184,7 +184,18 @@ class UserController extends Controller
             $data['password'] = bcrypt($request->password);
         }
 
-        dd($data['vehicle']);
+        // dd($data);
+        // var_dump($data);
+
+        // echo $data['vehicle'];
+
+        // foreach ($data['vehicle'] as $value) {
+        //     echo "tipo: " . $value['type'] . "<br>";
+        //     echo "placa: " . $value['plate'] . "<br>";
+        //     echo "cor: " . $value['color'] . "<br>";
+        // }
+
+        // die();
 
         /** inicio da modificação */
         if (Phone::where('user_id', $id)->first()) {
@@ -198,14 +209,25 @@ class UserController extends Controller
         /** fim */
         /** inicio da modificação */
         if (Vehicle::where('user_id', $id)->first()) {
-            $user->vehicle()->update([
-                'user_id' => $id,
-                'type' => $data['vehicle']['type'],
-                'plate' => $data['vehicle']['plate'],
-                'color' => $data['vehicle']['color'],
-            ]);
+            // $user->vehicles()->update([
+            //     'user_id' => $id,
+            //     'type' => $data['vehicle']['type'],
+            //     'plate' => $data['vehicle']['plate'],
+            //     'color' => $data['vehicle']['color'],
+            // ]);
         }else{
-            $user->vehicle()->create($request->only('type', 'plate', 'color'));
+            // $user->vehicle()->create($request->only('type', 'plate', 'color'));
+            foreach ($data['vehicle'] as $value) {
+
+                $user->vehicles()->saveMany([
+                    new Vehicle(['type' => $value['type'],
+                                'plate' => $value['plate'],
+                                'color' => $value['color']
+                    ])
+                ]);
+
+            }
+
         }
         /** fim */
         /** inicio da modificação */
@@ -228,13 +250,21 @@ class UserController extends Controller
         /** fim */
         /** inicio da modificação */
         if (Relative::where('user_id', $id)->first()) {
-            $user->relative()->update([
-                'user_id' => $id,
-                'name_relative' => $data['name_relative'],
-                'relationship' => $data['relationship'],
-            ]);
+            // $user->relative()->update([
+            //     'user_id' => $id,
+            //     'name_relative' => $data['name_relative'],
+            //     'relationship' => $data['relationship'],
+            // ]);
         }else{
-            $user->relative()->create($request->only('name_relative','relationship'));
+            foreach ($data['relative'] as $value) {
+                $user->relatives()->saveMany([
+                    new Relative([
+                        'name' => $value['name'],
+                        'relationship' => $value['relationship']
+                    ])
+                ]);
+            }
+            //$user->relative()->create($request->only('name_relative','relationship'));
         }
         /** fim */
         //  $user->update($data);   trecho original
