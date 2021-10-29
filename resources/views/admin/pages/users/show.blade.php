@@ -58,7 +58,7 @@
                             </tr>
                             <tr>
                                 <th><?= __('Nascimento') ?></th>
-                                <td>{{ ( date('d/m/Y', strtotime($user->complement->birth)) ?? '') }}</td>
+                                <td>{{ /* ( date('d/m/Y', strtotime($user->complement->birth)) */ ($user->complement->birth ??  '') }}</td>
                             </tr>
                             <tr>
                                 <th><?= __('CPF') ?></th>

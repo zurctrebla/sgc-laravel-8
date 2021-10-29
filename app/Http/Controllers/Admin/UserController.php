@@ -45,16 +45,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function profile()
-    {
-        return view('admin.pages.users.teste');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreUpdateUser  $request
@@ -63,9 +53,6 @@ class UserController extends Controller
     public function store(StoreUpdateUser $request)
     {
         $data = $request->all();
-
-        dd($data);
-
         $data['password'] = bcrypt($data['password']);  //  encrypt password
 
         // $this->repository->create($data);
@@ -74,10 +61,8 @@ class UserController extends Controller
         $user->phone()->create($request->only('number'));                                       //  desta forma ok
         $user->vehicle()->create($request->only('type', 'plate', 'color'));                     //  desta forma ok
         $user->complement()->create($request->only('complement', 'type', 'occupants'));         //  desta forma ok
-        // $phone = $user->phone()->create($data);              //  desta forma ok
-
+        // $phone = $user->phone()->create($data);                                              //  desta forma ok
         // $user = $this->repository->where('name', $data['name']);
-        // dd($user->id);
 
         return redirect()->route('users.index')->with('message', 'Usuário criado com sucesso');
     }
@@ -201,6 +186,7 @@ class UserController extends Controller
             //     'relationship' => $data['relationship'],
             // ]);
         }else{
+
             foreach ($data['relative'] as $value) {
                 $user->relatives()->saveMany([
                     new Relative([

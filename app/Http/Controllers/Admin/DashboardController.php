@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Guest;
+use App\Models\{Guest, Vehicle};
 use App\User;
 use Illuminate\Http\Request;
 
@@ -20,8 +20,13 @@ class DashboardController extends Controller
         $totalUsers = User::/* where('tenant_id', $tenant->id)-> */count();
 
         $totalGuests = Guest::count();
+        $totalVehicles = Vehicle::count();
 
-        return view('admin.pages.home.home', compact('totalUsers', 'totalGuests'));
+        return view('admin.pages.home.home', compact(
+            'totalUsers',
+            'totalGuests',
+            'totalVehicles'
+        ));
     }
 
 }
