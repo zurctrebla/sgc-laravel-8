@@ -16,12 +16,6 @@ Route::prefix('admin')
         ->group(function(){
 
     /**
-     * Routes Profiles
-     */
-    Route::any('profiles/search', 'ProfileController@search')->name('profiles.search');
-    Route::resource('profiles', 'ProfileController');
-
-    /**
      * Routes Destinies
      */
     Route::any('destinies/search', 'DestinyController@search')->name('destinies.search');
@@ -30,20 +24,13 @@ Route::prefix('admin')
     /**
      * Routes Users
      */
-    // Route::any('users/search', 'UserController@search')->name('users.search');
-    // Route::resource('users', 'UserController');
-    Route::post('users/savage', 'UserController@savage')->name('users.savage');
-    Route::get('users/profile', 'UserController@profile')->name('users.profile');
-    Route::get('users/member', 'UserController@member')->name('users.member');
-    Route::get('users/teste', 'UserController@teste')->name('users.teste');
+    Route::any('users/search', 'UserController@search')->name('users.search');
     Route::resource('users', 'UserController');
 
     /**
      * Routes guests
      */
     Route::get('guests/qrcode/{id}', 'GuestController@qrcode')->name('guests.qrcode');
-
-    Route::get('guests/teste', 'GuestController@teste')->name('guests.teste');
 
     Route::get('guests/create', 'GuestController@create')->name('guests.create');
     Route::put('guests/{id}', 'GuestController@update')->name('guests.update');
@@ -67,9 +54,9 @@ Route::prefix('admin')
     Route::get('roles', 'RoleController@index')->name('roles.index');
 
     /**
-     * Routes Dashboard
+     * Home Dashboard
      */
-    Route::get('/', 'GuestController@index')->name('admin.index');
+    Route::get('/', 'DashboardController@home')->name('admin.index');
 });
 
 // Route::get('/', function () {

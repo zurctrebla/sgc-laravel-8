@@ -51,60 +51,7 @@ class UserController extends Controller
      */
     public function profile()
     {
-        // "Ok";
         return view('admin.pages.users.teste');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function savage(Request $request)
-    {
-        $data = $request->all();
-
-        dd($data);
-
-        $user = User::find(1);
-
-        $user->vehicle()->createMany($data);
-
-        $vehicle = new Vehicle([
-            'type' => $data['type'],
-            'plate' => $data['plate'],
-            'color' => $data['color'],
-
-        ]);
-
-        $user = User::create($data);
-        $user->vehicle()->create($request->only('type', 'plate', 'color'));                     //  desta forma ok
-
-
-
-
-        // "Ok";
-        // return view('admin.pages.users.teste')->with('message', 'Cadastrado com sucesso!');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function teste()
-    {
-        return view('admin.pages.users.teste');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function member(Request $request)
-    {
-        return view('admin.pages.users.member');
     }
 
     /**
@@ -186,9 +133,7 @@ class UserController extends Controller
 
         // dd($data);
         // var_dump($data);
-
         // echo $data['vehicle'];
-
         // foreach ($data['vehicle'] as $value) {
         //     echo "tipo: " . $value['type'] . "<br>";
         //     echo "placa: " . $value['plate'] . "<br>";
