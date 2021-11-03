@@ -42,7 +42,11 @@
                                             <span class="d-none d-md-block">
                                                 <a href="{{ route('roles.show', $role->id) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
                                                 <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-outline-warning btn-sm">Editar</a>
-                                                <a href="" class="btn btn-outline-danger btn-sm">Apagar</a>
+                                                <form action="{{ route('roles.destroy', $role->id) }}" style="display:inline" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a Função ?')" >Apagar</button>
+                                                </form>
                                             </span>
                                             <div class="dropdown d-block d-md-none">
                                                 <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,7 +55,7 @@
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                                     <a href="{{ route('roles.show', $role->id) }}" class="dropdown-item">Visualizar</a>
                                                     <a href="{{ route('roles.edit', $role->id) }}" class="dropdown-item">Editar</a>
-                                                    <a href="" class="dropdown-item">Apagar</a>
+                                                    <button class="dropdown-item" onclick="return confirm('Deseja apagar a Função ?')">Apagar</button>
                                                 </div>
                                             </div>
                                         </td>

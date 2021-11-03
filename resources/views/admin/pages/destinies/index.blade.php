@@ -42,6 +42,11 @@
                             <span class="d-none d-md-block">
                                 <a href="{{ route('destinies.show', $destiny->id) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
                                 <a href="{{ route('destinies.edit', $destiny->id) }}" class="btn btn-outline-warning btn-sm">Editar</a>
+                                <form action="{{ route('destinies.destroy', $destiny->id) }}" style="display:inline" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o Setor ?')" >Apagar</button>
+                                </form>
                             </span>
                             <div class="dropdown d-block d-md-none">
                                 <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,6 +55,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                     <a href="{{ route('destinies.show', $destiny->id) }}" class="dropdown-item">Visualizar</a>
                                     <a href="{{ route('destinies.edit', $destiny->id) }}" class="dropdown-item">Editar</a>
+                                    <button class="dropdown-item" onclick="return confirm('Deseja apagar o Setor ?')">Apagar</button>
                                 </div>
                             </div>
                         </td>

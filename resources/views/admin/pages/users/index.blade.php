@@ -29,9 +29,9 @@
                             <table id="users" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                    <th>Nome</th>
-                                    <th>E-mail</th>
-                                    <th class="text-center">Ações</th>
+                                        <th>Nome</th>
+                                        <th>E-mail</th>
+                                        <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,11 +43,10 @@
                                                 <span class="d-none d-md-block">
                                                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
                                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-warning btn-sm">Editar</a>
-                                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                                    <form action="{{ route('users.destroy', $user->id) }}" style="display:inline" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-outline-danger btn-sm">Apagar</button>
-                                                        <a hidden href="" class="btn btn-outline-danger btn-sm">Apagar</a>
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o usuário ?')" >Apagar</button>
                                                     </form>
                                                 </span>
                                                 <div class="dropdown d-block d-md-none">
@@ -57,7 +56,7 @@
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                                         <a href="{{ route('users.show', $user->id) }}" class="dropdown-item">Visualizar</a>
                                                         <a href="{{ route('users.edit', $user->id) }}" class="dropdown-item">Editar</a>
-                                                        <a href="" class="dropdown-item">Apagar</a>
+                                                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o usuário ?')">Apagar</button>
                                                     </div>
                                                 </div>
                                             </td>
