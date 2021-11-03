@@ -52,7 +52,7 @@
                             <span class="d-none d-md-block">
                                 <a href="{{ route('guests.show', $guest->id) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
                                 <a href="{{ route('guests.edit', $guest->id) }}" class="btn btn-outline-warning btn-sm">Editar</a>
-                                <form action="{{ route('guests.destroy', $user->id) }}" style="display:inline" method="POST">
+                                <form action="{{ route('guests.destroy', $guest->id) }}" style="display:inline" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o visitante ?')" >Apagar</button>
